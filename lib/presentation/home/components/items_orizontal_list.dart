@@ -15,24 +15,24 @@ class ItemsHorizontalList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left:18.0,right: 8.0,top: 8.0),
+          padding: const EdgeInsets.only(left:18.0, right: 8.0, top: 8.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(title.isNotEmpty ? title : "",),
+              Text(title, style: const TextStyle(color: Colors.black87),),
               InkWell(
                 onTap: (){
 
                 },
-                child: Text("more"),
+                child: const Text("more...", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
               ),
             ],
           ),
         ),
         Container(
-          height: 160,
-          padding: EdgeInsets.only(right:8.0,left:8.0),
-          margin: EdgeInsets.only(top: 8.0),
+          height: 120,
+          padding: const EdgeInsets.only(right:8.0, left:8.0),
+          margin: const EdgeInsets.only(top: 8.0),
           child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: items.length,

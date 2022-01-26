@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:fro_meals/presentation/main/main_screen.dart';
+import 'package:fro_meals/presentation/main_container/main_screen.dart';
 
 
 class LoadingSplashScreen extends StatefulWidget {

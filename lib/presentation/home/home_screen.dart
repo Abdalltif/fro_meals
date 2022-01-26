@@ -1,7 +1,9 @@
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:fro_meals/data/models/item.dart';
-import 'package:fro_meals/data/models/main_list_model.dart';
+import 'package:fro_meals/data/repositories/mock/mock.dart';
 import 'package:fro_meals/presentation/home/components/main_lists.dart';
+import 'package:fro_meals/presentation/home/home_viewmodel.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,54 +13,73 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String url = "https://images.creativemarket.com/0.1.0/ps/8743179/1160/772/m1/fpnw/wm0/healthy-food-facebook-ad-.png?1595142715&s=32c95bd7882f9f3751293714ec3948af";
+  final HomeViewModel _viewModel = HomeViewModel();
+  String url1 = "https://www.ipsos.com/sites/default/files/styles/max_1300x1300/public/ct/publication/2021-04/cover.png";
+  String url2 = "https://loudgrowth.in/wp-content/uploads/2020/12/facebook-advertising-agency.jpg";
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: 200,
-          child: Card(
-            elevation: 0,
-            child: Image.network(url, fit: BoxFit.cover),
+        CarouselSlider(
+          items: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 200,
+              child: Card(
+                elevation: 2,
+                color: Colors.white,
+                child: Image.network(url1, fit: BoxFit.cover),
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 200,
+              child: Card(
+                elevation: 2,
+                color: Colors.white,
+                child: Image.network(url2, fit: BoxFit.cover),
+              ),
+            ),
+          ],
+          options: CarouselOptions(
+              autoPlay: true,
+              autoPlayAnimationDuration: const Duration(milliseconds: 500),
+              enlargeCenterPage: false,
+              height: 200,
           ),
         ),
-        Container(
+
+        const Opacity(
+          opacity: 0.3,
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical: 20.0),
+            child: Divider(
+              height: 2,
+              thickness: 0.5,
+              color: Colors.grey,
+            ),
+          ),
+        ),
+
+        SizedBox(
           width: MediaQuery.of(context).size.width,
           child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: _getMainLists().length,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: MockData.getMainLists().length,
               itemBuilder: (context,index){
-                return MainLists(title: _getMainLists()[index].title, items: _getMainLists()[index].items,);
+                return MainLists(title: MockData.getMainLists()[index].title, items: MockData.getMainLists()[index].items,);
               }
           ),
+        ),
+        const SizedBox(
+          height: 10,
         )
       ],
     );
   }
 
-  List<Item> _getLastScannedItems(){
-    List<Item> items = [];
 
-    items.add(Item("product 1", "instruction 1 2 3 4", "url"));
-    items.add(Item("product 2", "instruction 1 2 3 4 5 6", "url"));
-    items.add(Item("product 1", "instruction 1 2 3 4", "url"));
-
-    return items;
-  }
-
-  List<MainListModel> _getMainLists(){
-    List<MainListModel> mainList = [];
-
-    mainList.add(MainListModel("Last scanned food", _getLastScannedItems()));
-    mainList.add(MainListModel("Browse brands", _getLastScannedItems()));
-    mainList.add(MainListModel("Last scanned food", _getLastScannedItems()));
-    mainList.add(MainListModel("Last scanned food", _getLastScannedItems()));
-
-    return mainList;
-  }
 }

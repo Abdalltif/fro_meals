@@ -9,12 +9,9 @@ class MainLists extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          ItemsHorizontalList(title: title, items: items,),
-        ],
-      ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 14),
+      child: ItemsHorizontalList(title: title, items: items),
     );
   }
 }

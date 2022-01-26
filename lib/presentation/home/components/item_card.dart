@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fro_meals/common/constants.dart';
 import 'package:fro_meals/data/models/item.dart';
 
 class ItemCard extends StatelessWidget {
@@ -13,53 +12,65 @@ class ItemCard extends StatelessWidget {
     return InkWell(
       onTap: onPressed(),
       child: Container(
-        height: 55,
-        width: 55,
-        margin: const EdgeInsets.all(2),
+        width: 90,
+        margin: const EdgeInsets.all(4),
         decoration: const BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black54,
+              blurRadius: 2,
+              offset: Offset(2, 1), // Shadow position
+            ),
+          ],
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           gradient: LinearGradient(
-              colors: [Color(0xff282b28),Color(0xff282b28)],
+              colors: [Color(0xff002b28),Color(0xff282b28)],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter),
         ),
-        child: Container(
+        child: SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            margin: EdgeInsets.all(3),
+            // margin: EdgeInsets.all(1),
             child: Stack(
               children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: Image.network(item.imgUrl, fit: BoxFit.cover)
+                  ),
+                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Expanded(
                       flex: 4,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderRadius: const BorderRadius.all(Radius.circular(10.0)),
                         child: Container(
                           width: MediaQuery.of(context).size.width,
-                          // height:MediaQuery.of(context).size.height ,
-                          margin: EdgeInsets.all(0),
                         ),
                       ),
                     ),
                     Expanded(
                       flex: 1,
                       child: Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: Container(
-                            alignment: Alignment.center,
-                            child: Text(
-                              item.name,
-                              softWrap: false,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                fontSize: 22,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.right,
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            item.name,
+                            softWrap: false,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
                             ),
-                          )),
+                            textAlign: TextAlign.right,
+                          ),
+                        )
+                      ),
                     ),
                   ],
                 ),

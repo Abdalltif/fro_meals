@@ -43,7 +43,7 @@ class FroMealsApp extends StatelessWidget {
             headline1: TextStyle(
                 fontSize: 72.0, fontWeight: FontWeight.bold),
             subtitle1: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-            bodyText1: TextStyle(fontSize: 14.0, fontFamily: 'Hacen'),
+            bodyText1: TextStyle(fontSize: 14.0, fontFamily: 'GothamBold'),
           ),
           unselectedWidgetColor: Colors.grey[400]
       ),
