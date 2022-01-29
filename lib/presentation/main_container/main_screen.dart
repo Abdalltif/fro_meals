@@ -2,8 +2,9 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fro_meals/common/constants.dart';
-import 'package:fro_meals/presentation/categories/categories_screen.dart';
+import 'package:fro_meals/presentation/categories/browse_screen.dart';
 import 'package:fro_meals/presentation/home/home_screen.dart';
 import 'package:fro_meals/presentation/main_container/components/main_appbar_content.dart';
 import 'package:fro_meals/presentation/scan/scan_screen.dart';
@@ -24,7 +25,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
   final _screenOptions = [
     const HomeScreen(),
     const ScanScreen(),
-    const CategoriesScreen(),
+    const BrowseScreen(),
     const ScanScreen(),
   ];
 
@@ -51,7 +52,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
           items: const [
             TabItem(icon: Icons.home, title: 'Home'),
             TabItem(icon: Icons.settings_overscan, title: 'Scan'),
-            TabItem(icon: Icons.category, title: 'Categories'),
+            TabItem(icon: FontAwesomeIcons.cookieBite, title: 'Browse'),
             TabItem(icon: Icons.settings, title: 'Settings'),
           ],
           backgroundColor: Colors.white,
