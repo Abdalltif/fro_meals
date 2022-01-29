@@ -75,7 +75,7 @@ class SearchItemCard extends StatelessWidget {
                               ),
                               const SizedBox(width: 5,),
                               const Text(
-                                  "Manufacture",
+                                  "Brand",
                                   style: TextStyle(color: Colors.black87,fontSize: 12, fontWeight: FontWeight.normal, fontStyle: FontStyle.italic)
                               ),
                               const SizedBox(width: 20,),

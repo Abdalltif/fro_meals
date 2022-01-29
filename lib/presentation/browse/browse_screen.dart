@@ -3,9 +3,9 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fro_meals/common/helpers.dart';
 import 'package:fro_meals/data/models/brand.dart';
 import 'package:fro_meals/data/models/category.dart';
-import 'package:fro_meals/presentation/categories/browse_viewmodel.dart';
-import 'package:fro_meals/presentation/categories/components/brand_grid_item.dart';
-import 'package:fro_meals/presentation/categories/components/category_grid_item.dart';
+import 'package:fro_meals/presentation/browse/browse_viewmodel.dart';
+import 'package:fro_meals/presentation/browse/components/brand_grid_item.dart';
+import 'package:fro_meals/presentation/browse/components/category_grid_item.dart';
 import 'package:provider/provider.dart';
 
 

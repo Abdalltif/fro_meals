@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fro_meals/presentation/search/search_screen.dart';
 
 class MainAppBarContent extends StatefulWidget {
   const MainAppBarContent({Key? key}) : super(key: key);
@@ -23,35 +21,21 @@ class _MainAppBarContentState extends State<MainAppBarContent> {
                 image: AssetImage('images/logo-white.png'),
                 height: 40,
               ),
-              // Text(
-              //   'FroMeals',
-              //   style: TextStyle(color: Colors.white),
-              // ),
               const Spacer(),
               IconButton(
                 icon: const Icon(
-                  FontAwesomeIcons.search,
+                  Icons.menu,
                   size: 24,
                 ),
                 color: Colors.white,
                 onPressed: () {
-                  goToSearchItems();
+                  // todo: drawer
                 },
               ),
             ],
           ),
         ),
       ],
-    );
-  }
-
-  void goToSearchItems() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            fullscreenDialog: true,
-            builder: (BuildContext context) => const SearchScreen()
-        )
     );
   }
 }

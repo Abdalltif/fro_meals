@@ -6,7 +6,7 @@ import 'package:fro_meals/data/models/item.dart';
 import 'package:fro_meals/data/repositories/mock/mock_search_repository_impl.dart';
 import 'package:fro_meals/domain/repositories/search_repository.dart';
 
-class SearchItemsViewModel extends ChangeNotifier {
+class SearchViewModel extends ChangeNotifier {
 
   final SearchRepository _repository = MockSearchRepositoryImpl();
 

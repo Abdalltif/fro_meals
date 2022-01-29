@@ -4,10 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fro_meals/common/constants.dart';
-import 'package:fro_meals/presentation/categories/browse_screen.dart';
+import 'package:fro_meals/presentation/browse/browse_screen.dart';
 import 'package:fro_meals/presentation/home/home_screen.dart';
 import 'package:fro_meals/presentation/main_container/components/main_appbar_content.dart';
 import 'package:fro_meals/presentation/scan/scan_screen.dart';
+import 'package:fro_meals/presentation/search/search_screen.dart';
 import 'package:toast/toast.dart';
 
 class MainScreen extends StatefulWidget {
@@ -26,7 +27,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
     const HomeScreen(),
     const ScanScreen(),
     const BrowseScreen(),
-    const ScanScreen(),
+    const SearchScreen(),
   ];
 
   @override
@@ -53,7 +54,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
             TabItem(icon: Icons.home, title: 'Home'),
             TabItem(icon: Icons.settings_overscan, title: 'Scan'),
             TabItem(icon: FontAwesomeIcons.cookieBite, title: 'Browse'),
-            TabItem(icon: Icons.settings, title: 'Settings'),
+            TabItem(icon: Icons.search, title: 'Search'),
           ],
           backgroundColor: Colors.white,
           color: Colors.grey[400],

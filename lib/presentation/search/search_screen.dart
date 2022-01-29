@@ -11,7 +11,7 @@ import 'package:fro_meals/data/models/item.dart';
 import 'package:fro_meals/presentation/item_details/item_details_screen.dart';
 import 'package:fro_meals/presentation/search/components/search_appbar_content.dart';
 import 'package:fro_meals/presentation/search/components/search_item_card.dart';
-import 'package:fro_meals/presentation/search/search_items_viewmodel.dart';
+import 'package:fro_meals/presentation/search/search_viewmodel.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -22,72 +22,59 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final SearchBarController<Item> _searchBarController = SearchBarController();
-  final SearchItemsViewModel _viewModel = SearchItemsViewModel();
+  final SearchViewModel _viewModel = SearchViewModel();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(88.0),
-        child: Container(
-          height: 88,
-          decoration: const BoxDecoration(
-            color: Constants.APP_BAR_COLOR,
-          ),
-          child:  const SearchAppBarContent(),
-        ),
-      ),
-      body: Container(
-        color: Colors.grey[200],
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            // const Text(
-            //   "Filters",
-            //   style: TextStyle(color: Colors.black87, fontSize: 16),
-            // ),
-            Flexible(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: SearchBar<Item>(
-                  onSearch: _viewModel.searchItems,
-                  textStyle: const TextStyle(color: Colors.black87, fontSize: 16),
-                  searchBarStyle: SearchBarStyle(
-                      backgroundColor: Colors.white,
-                      padding: EdgeInsets.only(left: 14, right: 14),
-                      borderRadius: BorderRadius.circular(6)
-                  ),
-                  minimumChars: 2,
-                  scrollDirection: Axis.vertical,
-                  icon: Icon(FontAwesomeIcons.search, color: Colors.blue,),
-                  iconActiveColor: Colors.red,
-                  searchBarController: _searchBarController,
-                  hintText: 'Search products, brands',
-                  hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
-                  placeHolder: Text("Search result", style: TextStyle(color: Colors.black87),),
-                  cancellationWidget: Text("Cancel", style: TextStyle(color: Colors.black87),),
-                  emptyWidget: Text("Check the name", style: TextStyle(color: Colors.black87), ),
-                  onCancelled: () {
-                    print("Cancelled triggered");
-                  },
-                  mainAxisSpacing: 0,
-                  onItemFound: (Item item, int index) {
-                    return GestureDetector(
-                      child: SearchItemCard(item: item, onPressed: (){},),
-                      onTap: (){
-                        Helpers.playClickSound();
-                        goToItemDetailsScreen(context);
-                      },
-                    );
-                  },
+    return Container(
+      color: Colors.grey[200],
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          // const Text(
+          //   "Filters",
+          //   style: TextStyle(color: Colors.black87, fontSize: 16),
+          // ),
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: SearchBar<Item>(
+                onSearch: _viewModel.searchItems,
+                textStyle: const TextStyle(color: Colors.black87, fontSize: 16),
+                searchBarStyle: SearchBarStyle(
+                    backgroundColor: Colors.white,
+                    padding: EdgeInsets.only(left: 14, right: 14),
+                    borderRadius: BorderRadius.circular(6)
                 ),
+                minimumChars: 2,
+                scrollDirection: Axis.vertical,
+                icon: Icon(FontAwesomeIcons.search, color: Colors.blue,),
+                iconActiveColor: Colors.red,
+                searchBarController: _searchBarController,
+                hintText: 'Search products, brands',
+                hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
+                placeHolder: Text("Search result", style: TextStyle(color: Colors.black87),),
+                cancellationWidget: Text("Cancel", style: TextStyle(color: Colors.black87),),
+                emptyWidget: Text("Check the name", style: TextStyle(color: Colors.black87), ),
+                onCancelled: () {
+                  print("Cancelled triggered");
+                },
+                mainAxisSpacing: 0,
+                onItemFound: (Item item, int index) {
+                  return GestureDetector(
+                    child: SearchItemCard(item: item, onPressed: (){},),
+                    onTap: (){
+                      Helpers.playClickSound();
+                      goToItemDetailsScreen(context);
+                    },
+                  );
+                },
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
