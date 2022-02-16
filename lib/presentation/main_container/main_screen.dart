@@ -6,6 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fro_meals/common/constants.dart';
 import 'package:fro_meals/presentation/browse/browse_screen.dart';
 import 'package:fro_meals/presentation/home/home_screen.dart';
+import 'package:fro_meals/presentation/main_container/components/app_drawer.dart';
 import 'package:fro_meals/presentation/main_container/components/main_appbar_content.dart';
 import 'package:fro_meals/presentation/scan/scan_screen.dart';
 import 'package:fro_meals/presentation/search/search_screen.dart';
@@ -36,16 +37,16 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       onWillPop: _onWillPop,
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(80.0),
-          child: Container(
-            decoration: const BoxDecoration(
-              color: Constants.APP_BAR_COLOR,
+        appBar: AppBar(
+          leading: const Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: Image(
+              image: AssetImage('images/logo-white.png'),
             ),
-            child: const MainAppBarContent(),
           ),
+          backgroundColor: Constants.APP_BAR_COLOR,
         ),
-        endDrawer: appDrawer(),
+        endDrawer: appDrawer(context),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: SingleChildScrollView(child: _screenOptions.elementAt(_selectedScreen)),
@@ -69,47 +70,6 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
           curveSize: 110,
         )
       )
-    );
-  }
-
-  Widget appDrawer() {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Text(
-              'FroMeals',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Profile'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.message),
-            title: Text('Vouchers'),
-          ),
-          ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Coupons'),
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Settings'),
-          ),
-        ],
-      ),
     );
   }
 
