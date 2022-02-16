@@ -156,7 +156,7 @@ class _BrowseScreenState extends State<BrowseScreen> with SingleTickerProviderSt
           ),
           onTap: (){
             Helpers.playClickSound();
-            // goToCategoryPlacesScreen(context, categories.data[index]);
+            goToProductListScreen(context, 1, brands[index].title);
           },
         );
       },
@@ -180,8 +180,8 @@ class _BrowseScreenState extends State<BrowseScreen> with SingleTickerProviderSt
             const Padding(
               padding: EdgeInsets.all(14.0),
               child: Text(
-                  "Top brands",
-                  style: TextStyle(color: Colors.black, fontSize: 18)
+                "Top brands",
+                style: TextStyle(color: Colors.black, fontSize: 18)
               ),
             ),
             Padding(

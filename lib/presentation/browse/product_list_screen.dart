@@ -21,13 +21,18 @@ class _ProductListScreen extends State<ProductListScreen> {
 
     return Scaffold(
       backgroundColor: const Color(0xffffffff),
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80.0),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: Constants.APP_BAR_COLOR,
-          ),
-          child: MoreListAppBarContent(title: widget.title),
+      appBar: AppBar(
+        title: Text(widget.title, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+        centerTitle: true,
+        backgroundColor: Theme.of(context).primaryColor,
+        elevation: 2.0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          iconSize: 25,
+          color: Colors.white,
+          onPressed: () async {
+            Navigator.of(context).pop();
+          },
         ),
       ),
       body: FutureBuilder(

@@ -26,13 +26,14 @@ Widget appDrawer(BuildContext context) {
             },
           ),
           const ListTile(
-            leading: Icon(Icons.message, color: Colors.black87,),
+            leading: Icon(Icons.credit_card, color: Colors.black87,),
             title: Text('Vouchers', style: TextStyle(color: Colors.black87),),
           ),
           const ListTile(
-            leading: Icon(Icons.account_circle, color: Colors.black87,),
+            leading: Icon(Icons.credit_card, color: Colors.black87,),
             title: Text('Coupons', style: TextStyle(color: Colors.black87),),
           ),
+          Divider(color: Colors.grey[400], endIndent: 32, indent: 32,),
           const ListTile(
             leading: Icon(Icons.settings, color: Colors.black87,),
             title: Text('Settings', style: TextStyle(color: Colors.black87),),
