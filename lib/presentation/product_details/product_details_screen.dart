@@ -3,8 +3,12 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fro_meals/common/helpers.dart';
+import 'package:fro_meals/data/models/product.dart';
 
-class ItemDetailsScreen extends StatelessWidget {
+class ProductDetailsScreen extends StatelessWidget {
+  final Product product;
+
+  ProductDetailsScreen({required this.product});
 
   String url = "https://i.pinimg.com/originals/d3/8d/9e/d38d9ed450f76d0b08995e85d9c1c976.jpg";
 
@@ -19,7 +23,7 @@ class ItemDetailsScreen extends StatelessWidget {
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 300,
-              child: Image.network(url, fit: BoxFit.cover),
+              child: Image.network(product.imgUrl, fit: BoxFit.cover),
             ),
             Container(
               color: Colors.black12,
@@ -45,13 +49,13 @@ class ItemDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(bottom: 18.0, top: 10),
-              child: Text('Frozen Kabab', style: TextStyle(color: Colors.black87, fontSize: 24),),
+              child: Text(product.name, style: TextStyle(color: Colors.black87, fontSize: 24),),
             ),
-            const Text("Haldiram's combines great taste and good health in its new Kebab Range", style: TextStyle(color: Colors.black54, fontSize: 16, fontStyle: FontStyle.italic),),
-            const SizedBox(height: 20,),
-            const Text("Kabab . Onion . Tomato", style: TextStyle(color: Colors.black87, fontSize: 16,),),
+            Text("Description combines great taste and good health in its new product Range", style: TextStyle(color: Colors.black54, fontSize: 16, fontStyle: FontStyle.italic),),
+            SizedBox(height: 20,),
+            Text("Kabab . Onion . Tomato", style: TextStyle(color: Colors.black87, fontSize: 16,),),
 
             Opacity(
               opacity: 0.5,
@@ -66,9 +70,9 @@ class ItemDetailsScreen extends StatelessWidget {
               ),
             ),
 
-            const Padding(
+            Padding(
               padding: EdgeInsets.only(bottom: 8.0),
-              child: Text('Instructions', style: TextStyle(color: Colors.black87, fontSize: 20),),
+              child: Text(product.instructions, style: TextStyle(color: Colors.black87, fontSize: 20),),
             ),
             const Text('1- Remove all packaging', style: TextStyle(color: Colors.black54, fontSize: 16, fontStyle: FontStyle.italic),),
             const Text('2- Leave it 10 minutes ', style: TextStyle(color: Colors.black54, fontSize: 16, fontStyle: FontStyle.italic),),

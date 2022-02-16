@@ -7,6 +7,7 @@ import 'package:fro_meals/presentation/browse/browse_viewmodel.dart';
 import 'package:fro_meals/presentation/browse/components/brand_grid_item.dart';
 import 'package:fro_meals/presentation/browse/components/category_grid_item.dart';
 import 'package:provider/provider.dart';
+import 'package:fro_meals/presentation/browse/product_list_screen.dart';
 
 
 class BrowseScreen extends StatefulWidget {
@@ -98,7 +99,7 @@ class _BrowseScreenState extends State<BrowseScreen> with SingleTickerProviderSt
           ),
           onTap: (){
             Helpers.playClickSound();
-            // goToCategoryPlacesScreen(context, categories.data[index]);
+            goToProductListScreen(context, 1, categories[index].title);
           },
         );
       },
@@ -190,6 +191,16 @@ class _BrowseScreenState extends State<BrowseScreen> with SingleTickerProviderSt
           ],
         ),
       ),
+    );
+  }
+
+  goToProductListScreen(BuildContext context, int categoryId, String title){
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            fullscreenDialog: true,
+            builder: (BuildContext context) => ProductListScreen(categoryId: categoryId, title: title)
+        )
     );
   }
 }

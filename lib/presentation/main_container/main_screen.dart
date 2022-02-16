@@ -42,9 +42,10 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
             decoration: const BoxDecoration(
               color: Constants.APP_BAR_COLOR,
             ),
-            child:  const MainAppBarContent(),
+            child: const MainAppBarContent(),
           ),
         ),
+        endDrawer: appDrawer(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: SingleChildScrollView(child: _screenOptions.elementAt(_selectedScreen)),
@@ -68,6 +69,47 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
           curveSize: 110,
         )
       )
+    );
+  }
+
+  Widget appDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: Text(
+              'FroMeals',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text('Profile'),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.message),
+            title: Text('Vouchers'),
+          ),
+          ListTile(
+            leading: Icon(Icons.account_circle),
+            title: Text('Coupons'),
+          ),
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('Settings'),
+          ),
+        ],
+      ),
     );
   }
 

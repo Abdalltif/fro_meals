@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:fro_meals/common/constants.dart';
 import 'package:fro_meals/common/helpers.dart';
-import 'package:fro_meals/data/models/item.dart';
-import 'package:fro_meals/presentation/item_details/item_details_screen.dart';
+import 'package:fro_meals/data/models/product.dart';
+import 'package:fro_meals/presentation/product_details/product_details_screen.dart';
 import 'package:fro_meals/presentation/search/components/search_appbar_content.dart';
 import 'package:fro_meals/presentation/search/components/search_item_card.dart';
 import 'package:fro_meals/presentation/search/search_viewmodel.dart';
@@ -21,7 +21,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  final SearchBarController<Item> _searchBarController = SearchBarController();
+  final SearchBarController<Product> _searchBarController = SearchBarController();
   final SearchViewModel _viewModel = SearchViewModel();
 
   @override
@@ -40,7 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
           Flexible(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: SearchBar<Item>(
+              child: SearchBar<Product>(
                 onSearch: _viewModel.searchItems,
                 textStyle: const TextStyle(color: Colors.black87, fontSize: 16),
                 searchBarStyle: SearchBarStyle(
@@ -62,12 +62,12 @@ class _SearchScreenState extends State<SearchScreen> {
                   print("Cancelled triggered");
                 },
                 mainAxisSpacing: 0,
-                onItemFound: (Item item, int index) {
+                onItemFound: (Product product, int index) {
                   return GestureDetector(
-                    child: SearchItemCard(item: item, onPressed: (){},),
+                    child: SearchProductCard(product: product),
                     onTap: (){
                       Helpers.playClickSound();
-                      goToItemDetailsScreen(context);
+                      goToProductScreen(context, product);
                     },
                   );
                 },
@@ -79,12 +79,12 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  goToItemDetailsScreen(BuildContext context){
+  goToProductScreen(BuildContext context, Product product){
     Navigator.push(
         context,
         MaterialPageRoute(
             fullscreenDialog: true,
-            builder: (BuildContext context) => ItemDetailsScreen()
+            builder: (BuildContext context) => ProductDetailsScreen(product: product)
         )
     );
   }

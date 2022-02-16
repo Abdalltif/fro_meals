@@ -1,4 +1,4 @@
 
-class HomeRepo {
+class HomeRepository {
   Future<dynamic> getMainLists() async {}
 }

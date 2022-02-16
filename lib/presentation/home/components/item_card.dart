@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:fro_meals/data/models/item.dart';
+import 'package:fro_meals/data/models/product.dart';
+import 'package:fro_meals/presentation/product_details/product_details_screen.dart';
 
-class ItemCard extends StatelessWidget {
-  final Function onPressed;
-  final Item item;
+class ProductCard extends StatelessWidget {
+  final Product item;
 
-  ItemCard({required this.onPressed, required this.item});
+  ProductCard({required this.item});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed(),
+      onTap: (){
+        goToProductScreen(context, item);
+      },
       child: Container(
         width: 90,
         margin: const EdgeInsets.all(4),
@@ -77,6 +79,16 @@ class ItemCard extends StatelessWidget {
               ],
             )),
       ),
+    );
+  }
+
+  goToProductScreen(BuildContext context, Product product){
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            fullscreenDialog: true,
+            builder: (BuildContext context) => ProductDetailsScreen(product: product)
+        )
     );
   }
 }

@@ -1,8 +1,8 @@
-import 'package:fro_meals/data/models/item.dart';
+import 'package:fro_meals/data/models/product.dart';
 
 class MainListModel {
   String title;
-  List<Item> items;
+  List<Product> items;
 
   MainListModel(this.title, this.items);
 }

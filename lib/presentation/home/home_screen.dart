@@ -49,7 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 200,
           ),
         ),
-
         const Opacity(
           opacity: 0.3,
           child: Padding(
@@ -61,7 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-
         SizedBox(
           width: MediaQuery.of(context).size.width,
           child: ListView.builder(
@@ -70,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: MockData.getMainLists().length,
               itemBuilder: (context,index){
-                return MainLists(title: MockData.getMainLists()[index].title, items: MockData.getMainLists()[index].items,);
+                return MainLists(title: MockData.getMainLists()[index].title, products: MockData.getMainLists()[index].items,);
               }
           ),
         ),
@@ -80,6 +78,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
     );
   }
-
-
 }

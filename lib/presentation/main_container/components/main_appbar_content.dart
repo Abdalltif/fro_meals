@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fro_meals/navigation_service.dart';
 
 class MainAppBarContent extends StatefulWidget {
   const MainAppBarContent({Key? key}) : super(key: key);
@@ -30,6 +31,10 @@ class _MainAppBarContentState extends State<MainAppBarContent> {
                 color: Colors.white,
                 onPressed: () {
                   // todo: drawer
+                  print("Main AppBar Clicked");
+                  // Scaffold.of(context).openDrawer();
+                  // Navigator.pop(context);
+                  // NavigationService.navigatorKey.currentContext.openDrawer();
                 },
               ),
             ],

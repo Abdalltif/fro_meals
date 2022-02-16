@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:fro_meals/presentation/splash/loading_splash_screen.dart';
+import 'navigation_service.dart';
 
 
 Future<void> main() async {
@@ -28,6 +29,7 @@ class FroMealsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: NavigationService.navigatorKey,
       debugShowCheckedModeBanner: true,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

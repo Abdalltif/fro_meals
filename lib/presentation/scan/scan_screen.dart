@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fro_meals/data/models/product.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:fro_meals/presentation/item_details/item_details_screen.dart';
+import 'package:fro_meals/presentation/product_details//product_details_screen.dart';
 
 class ScanScreen extends StatefulWidget {
   const ScanScreen({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _ScanScreenState extends State<ScanScreen> {
       child: Center(
         child: ElevatedButton(
             onPressed: () {
-              goToItemDetailsScreen();
+              goToProductScreen(new Product("name", "instructions", "imgUrl"));
               // scanQR();
             },
             child: const Text('Scan barcode')),
@@ -57,12 +58,12 @@ class _ScanScreenState extends State<ScanScreen> {
     });
   }
 
-  void goToItemDetailsScreen() {
+  void goToProductScreen(Product product) {
     Navigator.push(
         context,
         MaterialPageRoute(
             fullscreenDialog: true,
-            builder: (BuildContext context) => ItemDetailsScreen()
+            builder: (BuildContext context) => ProductDetailsScreen(product: product)
         )
     );
   }

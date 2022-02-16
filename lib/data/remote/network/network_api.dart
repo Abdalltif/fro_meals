@@ -6,12 +6,18 @@ import 'package:http/http.dart' as http;
 
 class NetworkApi extends BaseApi {
 
+  Map<String, String> requestHeaders = {
+    'Content-type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQxOTkxMTA1LCJleHAiOjE2NDQ1ODMxMDV9.Ca0QpnL8LWLMHLh86K9AP36MAL38gRi_F5p2HRqsMHI',
+  };
+
   @override
   Future<dynamic> getRequest(String params) async {
     var url = Uri.parse(baseUrl + params);
     dynamic responseJson;
     try {
-      final response = await http.get(url);
+      final response = await http.get(url, headers: requestHeaders);
       responseJson = returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');
@@ -24,7 +30,7 @@ class NetworkApi extends BaseApi {
     var url = Uri.parse(baseUrl + params);
     dynamic responseJson;
     try {
-      final response = await http.post(url, body: body);
+      final response = await http.post(url, headers: requestHeaders, body: body);
       responseJson = returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');

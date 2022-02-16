@@ -2,13 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fro_meals/data/models/item.dart';
+import 'package:fro_meals/data/models/product.dart';
 
-class SearchItemCard extends StatelessWidget {
-  final Function onPressed;
-  final Item item;
+class SearchProductCard extends StatelessWidget {
+  final Product product;
 
-  SearchItemCard({required this.onPressed, required this.item});
+  SearchProductCard({required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class SearchItemCard extends StatelessWidget {
               children: <Widget>[
                 CircleAvatar(
                   radius: 40,
-                  backgroundImage: NetworkImage(item.imgUrl),
+                  backgroundImage: NetworkImage(product.imgUrl),
                 ),
                 const SizedBox(width: 20,),
                 Flexible(
@@ -36,14 +35,14 @@ class SearchItemCard extends StatelessWidget {
                     children: <Widget>[
                       Container(
                         child: Text(
-                            item.name,
+                            product.name,
                             style: TextStyle(color: Colors.black87,fontSize: 16, fontWeight: FontWeight.normal)
                         ),
                       ),
                       SizedBox(height: 8,),
                       Container(
                         child: Text(
-                            item.instructions,
+                            product.instructions,
                             textAlign: TextAlign.right,
                             style: TextStyle(color: Colors.black54,fontSize: 14, fontWeight: FontWeight.normal)
                         ),
